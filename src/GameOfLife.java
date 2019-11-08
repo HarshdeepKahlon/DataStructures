@@ -2,26 +2,33 @@
 // 11/01/2019
 // GameOfLife.java
 
-public class GameOfLife<T> {
+public class GameOfLife {
   boolean[][] coordinates;
   int length;
   int width;
   int currentRow;
 
-  // Default
-  public GameOfLife() {
-    coordinates = new boolean[32][32];
-    length = 32;
-    width = 32;
-    currentRow = 2;
-  }
-
-  // Parameter
   public GameOfLife(int length, int width) {
     this.coordinates = new boolean[length][width];
     this.length = length;
     this.width = width;
     this.currentRow = 2;
+  }
+
+  public GameOfLife(boolean[][] coordinates) {
+    this.coordinates = coordinates;
+    this.length = this.width = coordinates.length;
+    this.currentRow = 2;
+  }
+
+  public int getNumAlive() {
+    int total = 0;
+    for (int i = 0; i < coordinates.length; i++) {
+      for (int j = 0; j < coordinates[i].length; j++) {
+        if (coordinates[i][j]) total++;
+      }
+    }
+    return total;
   }
 
   public void input(String setOfData) {
@@ -130,25 +137,4 @@ public class GameOfLife<T> {
     }
     coordinates = temp;
   }
-
-  public static void main(String[] args) {
-    var conways = new GameOfLife<Integer>(32, 32);
-    conways.input("00030000");
-    conways.input("00030000");
-    conways.input("0000C000");
-    conways.input("0000C000");
-    conways.dumpUserFriendly();
-    conways.dumpCompact();
-
-    conways.nextIteration();
-
-    conways.dumpUserFriendly();
-    conways.dumpCompact();
-
-    conways.nextIteration();
-
-    conways.dumpUserFriendly();
-    conways.dumpCompact();
-  }
-
 }

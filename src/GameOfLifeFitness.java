@@ -74,7 +74,7 @@ public class GameOfLifeFitness extends GameOfLife {
         var board = new boolean[32][32];
         for (int i = 0; i < starter.length; i++) {
             for (int j = 0; j < starter[i].length; j++) {
-                board[i + 15][j + 15] = starter[i][j];
+                board[i + 12][j + 12] = starter[i][j];
             }
         }
         return board;
@@ -134,6 +134,6 @@ public class GameOfLifeFitness extends GameOfLife {
         System.out.printf("Design One has a fitness of %d\n", fitnessBoard.fitness(designOne));
         System.out.printf("Design Two has a fitness of %d\n", fitnessBoard.fitness(designTwo));
 
-        fitnessBoard.bruteForce(0.1);
+        fitnessBoard.bruteForce(0.01);
     }
 }
